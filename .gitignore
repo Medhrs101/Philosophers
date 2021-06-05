@@ -1,4 +1,4 @@
 *.o
 *.a
-./srcs
+srcs
 .gitignore
