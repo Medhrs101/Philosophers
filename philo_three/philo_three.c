@@ -6,7 +6,7 @@
 /*   By: moharras <moharras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 15:46:11 by moharras          #+#    #+#             */
-/*   Updated: 2021/06/05 16:04:03 by moharras         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:28:42 by moharras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ void	*philosophize(void *v_ph)
 	while (1)
 	{
 		lock_forks_and_eat(var, ph);
-		if (ph->eat_count == var->nb_ph_must_eat)
-		{
-			sem_post(var->sem_eat);
-			break ;
-		}
 		sleeping_and_thinking_philo(var, ph);
+		if (ph->eat_count == var->nb_ph_must_eat)
+			sem_post(var->sem_eat);
 	}
 	return (NULL);
 }
@@ -50,7 +47,7 @@ int	create_processes(t_var *var)
 	i = 0;
 	if (var->nb_ph_must_eat != -101)
 	{
-		pthread_create(&(var->thread), NULL, &check_eating, NULL);
+		pthread_create(&(var->thread), NULL, &check_eating, var);
 		pthread_detach(var->thread);
 	}
 	while (i < var->nb_ph)

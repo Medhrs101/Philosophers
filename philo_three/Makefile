@@ -1,7 +1,10 @@
 NAME = philo_three
 LIB = philo_three.a
-SRC =./philo_three.c
-
+SRC =./philo_three.c \
+	./eating_dying.c \
+	./get_and_check_args.c \
+	./semaphore.c \
+	./utils.c
 
 OBJ = $(SRC:.c=.o)
 

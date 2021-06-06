@@ -6,7 +6,7 @@
 /*   By: moharras <moharras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 15:32:48 by moharras          #+#    #+#             */
-/*   Updated: 2021/06/05 16:04:24 by moharras         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:45:59 by moharras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,9 @@ void	*philosophize(void *v_ph)
 	while (1)
 	{
 		lock_forks_and_eat(var, ph);
-		if (ph->eat_count == var->nb_ph_must_eat)
-		{
-			var->counter++;
-			break ;
-		}
 		sleeping_and_thinking_philo(var, ph);
+		if (ph->eat_count == var->nb_ph_must_eat)
+			var->counter++;
 	}
 	free(ph);
 	return (NULL);

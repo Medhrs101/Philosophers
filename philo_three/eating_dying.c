@@ -6,7 +6,7 @@
 /*   By: moharras <moharras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/05 15:47:15 by moharras          #+#    #+#             */
-/*   Updated: 2021/06/05 16:00:25 by moharras         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:48:54 by moharras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	lock_forks_and_eat(t_var *var, t_philo *ph)
 		ph->eat_count++;
 }
 
-void	*check_eating(void)
+void	*check_eating(void *arg)
 {
 	t_var	*var;
 
-	var = get_struct_var(NULL);
+	var = (t_var *)arg;
 	if (var->nb_ph_must_eat != -101)
 	{
 		while (1)
@@ -74,7 +74,7 @@ void	*check_eating(void)
 			if (var->counter == var->nb_ph)
 			{
 				sem_wait(var->print_lock);
-				printf("\033[0;35mDone\033[0m\n");
+				printf("\033[0;35mdone\033[0m\n");
 				sem_post(var->mut);
 				break ;
 			}

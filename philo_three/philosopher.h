@@ -6,7 +6,7 @@
 /*   By: moharras <moharras@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:26:47 by ymarji            #+#    #+#             */
-/*   Updated: 2021/06/05 16:06:32 by moharras         ###   ########.fr       */
+/*   Updated: 2021/06/06 12:28:28 by moharras         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_var
 void	*philo_dying(void *v_ph);
 int		check_die(t_var *var, t_philo *ph);
 void	lock_forks_and_eat(t_var *var, t_philo *ph);
-void	*check_eating(void);
+void	*check_eating(void *arg);
 int		ft_atoi(const char *str);
 int		check_args(t_var *var, int ac);
 int		fill_args(t_var *var, int ac, char **av);
